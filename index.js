@@ -39,7 +39,6 @@ async function init() {
 
     try {
         let response = await inquirer.prompt(questions);
-        console.log({ ...response })
 
         const textObj = new Text(response.textColor, response.text)
         let shapeObj;
