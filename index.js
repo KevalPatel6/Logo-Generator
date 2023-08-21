@@ -1,5 +1,7 @@
 let fs = require('fs')
 const SVG = require('./lib/svg')
+const {Triangle, Circle, Square} = require("./lib/shapes")
+const Text = require('./lib/text')
 const inquirer = require('inquirer')
 let questions = [
     {
@@ -37,12 +39,23 @@ async function init() {
 
     try {
         let response = await inquirer.prompt(questions);
-        console.log({...response})
-         
-        const newLogo = await new SVG(response.text,response.textColor,response.shape,response.shapeColor)
-        
+        console.log({ ...response })
 
-        fs.writeFile('logo.svg', JSON.stringify(newLogo.shape.render()), function (err) {
+        const textObj = new Text(response.textColor, response.text)
+        let shapeObj;
+
+        if(response.shape == "Triangle") {
+            shapeObj = new Triangle(response.shapeColor);
+        } else if(response.shape == "Circle") {
+            shapeObj = new Circle(response.shapeColor);
+        }else if(response.shape=="Square"){
+            shapeObj = new Square(response.shapeColor)
+        }
+
+        const newLogo = new SVG(textObj, shapeObj);
+
+        fs.writeFile('logo.svg', (newLogo.render()), function (err) {
+            console.log("Generated logo.svg")
             if (err)
                 console.log(err)
         })
@@ -50,10 +63,5 @@ async function init() {
     } catch (error) {
         console.error('An error occurred', error)
     }
-    
+
 }
-
-
-
-// console.log(newLogo)
-
