@@ -54,7 +54,7 @@ async function init() {
         const newLogo = new SVG(textObj, shapeObj);
 
         fs.writeFile('./examples/logo.svg', (newLogo.render()), function (err) {
-            console.log("Generated logo.svg")
+            console.log("Generated logo.svg!!!")
             if (err)
                 console.log(err)
         })
