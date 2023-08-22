@@ -8,6 +8,14 @@ let questions = [
         type: 'input',
         name: 'text',
         message: 'Type in up to 3 characters for your logo',
+        validate: function(input){
+            if(input.length>3){
+                return "You must only use 3 characters for you logo!"
+            }
+            if(input.length<=3){
+                return true
+            }
+        }
     },
     {
         type: 'input',

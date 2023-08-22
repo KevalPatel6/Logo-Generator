@@ -1,5 +1,5 @@
 
 <svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
-<rect width="200" height="200" fill="black"/>
-<text x="100" y="115" font-size="60" text-anchor="middle" fill="red">KHP</text>
+<circle cx="100" cy="100" r="99" fill="Blue" />
+<text x="100" y="115" font-size="60" text-anchor="middle" fill="Red">KHP</text>
 </svg>
