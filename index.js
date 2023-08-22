@@ -40,7 +40,7 @@ async function init() {
     try {
         let response = await inquirer.prompt(questions);
 
-        const textObj = new Text(response.textColor, response.text)
+        const textObj = new Text(response.textColor, response.text, response.shape)
         let shapeObj;
 
         if(response.shape == "Triangle") {
@@ -53,7 +53,7 @@ async function init() {
 
         const newLogo = new SVG(textObj, shapeObj);
 
-        fs.writeFile('logo.svg', (newLogo.render()), function (err) {
+        fs.writeFile('./examples/logo.svg', (newLogo.render()), function (err) {
             console.log("Generated logo.svg")
             if (err)
                 console.log(err)
